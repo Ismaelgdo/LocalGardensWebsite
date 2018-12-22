@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocalGardens</title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" type="text/css">
+  <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet" type="text/css"></link>
+  <link href="styles.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+</head>
+<body>
+  <div id="app">
+    <v-app>
+
+      <!-- .....................................This is the toolbard................................................... -->
+      <v-toolbar app color="blue-grey darken-4" dark>
+        <v-toolbar-title>LocalGardens</v-toolbar-title>
+          <i class="material-icons" style="margin-left: 10px;">
+            nature_people
+          </i>
+          <!-- Adds space and shift rest of content to the right -->
+        <v-spacer></v-spacer>
+        <v-btn flat>About Us</v-btn>
+        <v-btn flat>Contact</v-btn>  
+      </v-toolbar>
+
+   
+      <!-- .................................................. This is the Hero Image..................................  -->
+      <v-container fluid fill-height class="hero-image mt-5">
+        <!-- This is what controls the text -->
+        <v-layout justify-center align-center column pa-5>
+            <div class="display-4 font-weight-black white--text text-xs-center">FIND YOUR LOCAL</div>
+            <div class="display-4 font-weight-black white--text text-xs-center mb-3">COMMUNITY GARDEN</div>
+            <v-btn large color="success">Go to the Map</v-btn>
+            <v-btn fab class="mt-5 blue-grey darken-4">
+              <v-icon large color="white">arrow_downward</v-icon>
+            </v-btn>
+        </v-layout>
+      </v-container>
+
+      <!-- .................................... Second hero image for the start your own section............................ -->
+      <v-container fluid fill-height class="second-image ">
+        <!-- This is what controls the text -->
+        <v-layout justify-center align-center column pa-5>
+            <div class="display-4 font-weight-black white--text text-lg-right">OR START YOUR</div>
+            <div class="display-4 font-weight-black white--text text-lg-right mb-3">OWN!</div>
+            <v-btn large color="success">Contact Us</v-btn>
+            
+            <v-btn fab class="mt-5 blue-grey darken-4">
+            <v-icon large color="white">arrow_downward</v-icon>
+            </v-btn>
+        </v-layout>
+      </v-container>
+
+      <!-- ........................................Description................................................-->
+      <section>
+        
+            <v-container >
+              <v-layout row wrap justify-center class="mt-5">
+
+
+                <!-- picture -->
+                <v-flex sm5 >
+                  <v-card class="elevation-0 transparent">
+                      <v-img src="../assests/gardening-tools.png" aspect-ratio="1" contain></v-img>
+                  </v-card>
+                </v-flex>
+
+                <!-- block of text -->
+                <v-flex  sm5 offset-sm1>
+                  <v-card class="elevation-0 transparent">
+                    <v-card-title primary-title class="layout justify-center">
+                      <div class="display-2">What we do</div>
+                    </v-card-title>
+                    <v-card-text class = "headline">
+                        <p>Lorem ipsum dolor sit amet, vero affert ne nam. Stet graecis ad usu, ne sed illud consequat disputationi. Vix ea essent 
+                            bonorum placerat, in omnis elitr temporibus per, ei mel legendos electram. Audire assentior ea eam, cetero consequat liberavisse no quo.
+                            Ut pertinax appellantur nec, verear civibus philosophia nam ne. Omnesque sensibus at has, prompta debitis volutpat ea vix.
+                        </p>
+                        
+                    </v-card-text>
+
+                    <v-card-text>
+
+
+                    </v-card-text>
+                  </v-card>
+                </v-flex>
+
+              </v-layout>
+            </v-container>
+      </section>
+
+
+      
+      <section>
+          <v-parallax
+            height="300"
+            src="../assests/plant.jpg"
+            >
+          
+          </v-parallax>
+  
+  
+      </section>
+
+      <!-- .................................................... Map.................................................. -->
+      <section id="appPositioning" >
+          <!-- class="display-2" -->
+              <div  class="layout justify-center align-center display-2 mb-5 text-xs-center" style="margin-top: 70px">Greenthumb Community Gardens <br> In New York City</div>
+              <div id="map"></div>
+
+
+                    <!-- ...................................................weather section.......................................................... -->
+
+      <div id="position">
+          
+          <div class="weatherContainer">
+              <h1 class="headline white--text" style="background-color: #263238; padding: 10px;" >Good day for gardening?<h1>
+              <h3 class="subheading wsubheading">Check the weather for you Area</h3>
+         
+              <br>
+              <div class="searchContainer" >
+                  <input class= "searchControl wsubheading " type="text"  placeholder="Type zipcode or city..." id="searchInput">
+                  <v-btn small class= "searchControl offset-sm2" id="searchBtn" >Search</v-btn>
+              </div>
+                  <v-container >
+                  <v-layout row wrap justify-center >
+                    
+                      <v-flex sm6>
+                          <h1 id="cityHeader"></h1>
+                          <div id ="Temperature" style="background-color: #263238" dark class="display-3 white--text"></div>
+                      </v-flex>
+
+                      <v-flex sm6>
+                          <div id ="weatherDescriptionheader"></div>
+                          <div><img id="documentIconImg"></div>
+                          <div id="windSpeed" class= "bottomDetails"></div>
+                          <div id= "humidity" class= "bottomDetails"></div>
+                      </v-flex>
+
+                
+                  </v-layout>
+                  </v-container>
+          
+            </div>
+   
+    
+        </div>
+      
+          
+
+      </section>
+
+      
+
+
+
+      <!-- .................................................... Voluntear section.................................................. -->
+      
+
+
+      <v-container >
+          <v-layout row wrap justify-center class="mt-1">
+
+            <!-- block of text -->
+            <v-flex  sm6 >
+                <v-card class="elevation-0 transparent ">
+                  <v-card-title primary-title class="layout justify-center " style="margin-top: 70px">
+                    <div class="display-2 mt-5">Volunteer Opportunities  </div>
+                  </v-card-title>
+                  <v-card-text >
+                      <p class="display-1  font-weight-thin text-xs-center">
+                          Our Community Gardens across New York City survive thanks to the kindness of 
+                          local volunteers and gardeners who maintain the premises throughout the years
+                      </p>
+
+                      <p class="headline text-xs-center font-weight-bold">Fill out the form below  to become a partner</p>
+                      
+                  </v-card-text>
+
+                </v-card>
+           </v-flex>
+
+            <!-- picture -->
+            <v-flex sm6    >
+              <v-card class="elevation-0 transparent">
+                  <v-img src="../assests/volunteers.jpg" aspect-ratio="1" contain></v-img>
+              </v-card>
+            </v-flex>
+
+
+
+          </v-layout>
+        </v-container>
+
+      <!-- .................................................... Form.................................................. -->
+       
+      <v-container class="mb-5 spacing">
+      <v-layout row wrap>
+      <v-flex >
+
+      
+          <v-form ref="form" v-model="valid" lazy-validation>
+            <v-text-field
+              v-model="name"
+              :rules="nameRules"
+              :counter="15"
+              label="First name"
+              required
+            ></v-text-field>
+
+            <v-text-field
+              v-model="lname"
+              :rules="lnameRules"
+              :counter="15"
+              label="Last name"
+              required
+           ></v-text-field>
+
+            <v-text-field
+              v-model="email"
+              :rules="emailRules"
+              label="E-mail"
+              required
+            ></v-text-field>
+
+            <v-text-field
+              v-model="location"
+              :rules="locationRules"
+              label="Preferred Location"
+              required
+          ></v-text-field>
+            
+            <v-checkbox
+              v-model="checkbox"
+              :rules="[v => !!v || 'You must agree to continue!']"
+              label="Do you agree to submit your application?"
+              required
+            ></v-checkbox>
+        
+            <v-btn
+              :disabled="!valid"
+              @click="submit"
+              color="success"
+            >
+              submit
+            </v-btn>
+            <v-btn @click="clear" color="primary">clear</v-btn>
+          </v-form>
+
+      </v-flex>
+      </v-layout>
+      </v-container>
+   
+
+      <!-- .....................................................Map section........................................................ -->
+      <section>
+        <br>
+        <br>
+        <br>
+
+      </section>
+
+  
+
+      
+      <!-- ........................................................Footer............................................................. -->
+      <v-footer absolute app align-center color="blue-grey darken-4" dark class="mt-0">
+        <v-layout justify-center>
+          &copy; 2018 rights reserved to LighningDevs
+        </v-layout>
+      </v-footer>
+
+
+
+
+
+
+
+
+
+
+         <!-- ..................................... End of Application............................................ -->
+    </v-app>
+
+
+  </div>
+
+  
+
+
+
+  <!-- ....................................Scripts................................................................. -->
+  <script type="text/x-template" id="page">
+    <v-layout column align-center>
+      <div>
+        <img src="./v.png" alt="Vuetify.js" class="mb-5" height="100px" />
+      </div>
+      <blockquote>
+        &#8220;First, solve the problem. Then, write the code.&#8221;
+        <footer>
+          <small>
+            <em>&mdash;John Johnson</em>
+          </small>
+        </footer>
+      </blockquote>
+    </v-layout>
+  </script>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+  <script src="https://code.jquery.com/jquery-git.js"></script>
+
+
+  <script>
+    Vue.component('page', {
+      template: '#page'
+    })
+    new Vue({
+      el: '#app',
+      data: {
+        clipped: true,
+        drawer: true,
+        fixed: false,
+        items: [
+          { icon: 'bubble_chart', title: 'Inspire' }
+        ],
+        miniVariant: false,
+        right: true,
+        rightDrawer: false,
+        title: 'Vuetify.js'
+      }
+    })
+  </script>
+
+
+  <!-- Weather API JavaScript -->
+
+  <script>
+  
+      let appID = "21cbe784885bcdc287d539668eccb7fe";
+      let searchMethod;
+
+
+      function getSearchMethod(searchTerm){
+          if(searchTerm.length === 5 && Number.parseInt(searchTerm)+ '' === searchTerm)
+              searchMethod = 'zip';
+          else
+              searchMethod = 'q';
+      }
+      function searchWeather(searchTerm){
+          getSearchMethod(searchTerm);
+          fetch(`http://api.openweathermap.org/data/2.5/weather?${searchMethod}=${searchTerm}&APPID=${appID}&units=imperial`).then(result =>{
+              return result.json();
+          }).then(result => {
+              init(result);
+          })
+      }
+      function init(resultFromServer){
+          let weatherDescriptionHeader = document.getElementById("weatherDescriptionheader");
+          let temperatureElement = document.getElementById("Temperature");
+          let humidityElement = document.getElementById("humidity");
+          let windSpeedElement = document.getElementById("windSpeed");
+          let cityHeader = document.getElementById("cityHeader");
+          let weatherIcon = document.getElementById ("documentIconImg");
+          
+          weatherIcon.src = 'http://openweathermap.org/img/w/' + resultFromServer.weather[0].icon + '.png';
+
+          let resultDescription = resultFromServer.weather[0].description;
+          weatherDescriptionHeader.innerText = resultDescription.charAt(0).toUpperCase() + resultDescription.slice(1);
+          
+
+          temperatureElement.innerHTML = Math.floor(resultFromServer.main.temp) +'&#176';
+          windSpeedElement.innerHTML = 'Wind at ' + Math.floor(resultFromServer.wind.speed) + ' m/s';
+          cityHeader.innerHTML = resultFromServer.name;
+          humidityElement.innerHTML = 'Humidity at ' +resultFromServer.main.humidity +'%';
+
+          
+
+      }
+      document.getElementById('searchBtn').addEventListener('click', () => {
+              let searchTerm = document.getElementById('searchInput').value;
+              if (searchTerm)
+                  searchWeather(searchTerm);
+      })
+
+
+  
+  
+  
+  </script>
+
+  <!-- Form script -->
+
+  <script>
+      import axios from 'axios'
+    
+      export default {
+        data: () => ({
+          valid: true,
+          name: '',
+          nameRules: [
+            v => !!v || 'First name is required',
+            v => (v && v.length <= 15) || 'Name must be less than 10 characters'
+          ],
+
+          lname: '',
+          lnameRules: [
+            v => !!v || 'Last name is required',
+            v => (v && v.length <= 15) || 'Name must be less than 10 characters'
+          ],
+
+          location: '',
+          locationRules: [
+            v => !!v || 'Location is required'
+          ],
+
+          email: '',
+          emailRules: [
+            v => !!v || 'E-mail is required',
+            v => /.+@.+/.test(v) || 'E-mail must be valid'
+          ],
+
+          checkbox: false
+        }),
+    
+        methods: {
+          submit () {
+            if (this.$refs.form.validate()) {
+              // Native form submission is not yet supported
+              axios.post('/api/submit', {
+                name: this.name,
+                email: this.email,
+                select: this.select,
+                checkbox: this.checkbox
+              })
+            }
+          },
+          clear () {
+            this.$refs.form.reset()
+          }
+        }
+      }
+  </script>
+
+
+<script 
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfjLJQtSwFCsOyUZoBbx9x39omimyqGnU&callback=initMap"
+           async defer>              
+</script>
+
+
+<script>
+ function initMap(){
+  //map options
+ var options = {
+          zoom:12,
+          center: {lat:40.757052, lng:-73.899776}
+       }
+      //new map
+ var map = new google.maps.Map(
+          document.getElementById('map'), options);
+
+      
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+$.getJSON(apiCall, gardenCallback);
+  
+   
+function gardenCallback(data){
+
+
+var info =  data;
+
+       for(var i = 0; i < data.length; i++){
+            addMarker(data[i]);
+        }
+
+function addMarker(x){
+     
+       if (x.nta) {
+           console.log(x.latitude);
+           console.log(x.longitude);
+            var marker = new google.maps.Marker({
+            position:{lat:parseFloat(x.latitude), lng:parseFloat(x.longitude)},
+            map:map,
+            icon:'http://maps.google.com/mapfiles/ms/icons/tree.png'
+        });
+
+        ///////////////////////////////////////add info to markers /////////////////////////////////////////////////////////////////////////////////////////////
+        if (x.nta){
+                     
+                     // var infoString = x.garden_name ;
+                      var infoWindow = new google.maps.InfoWindow({
+                              content:  "Name: "+ x.garden_name +"<br>" +"Address: "+ x.address + "<br>" +"Borough: " + x.boro         
+              });
+               
+             
+             }
+              marker.addListener('mouseover', function(){
+                  infoWindow.open(map, marker);
+              });
+
+              marker.addListener('mouseout', function(){
+                  infoWindow.close();
+              });
+            
+      }
+
+   }
+
+  }
+
+}       
+</script>
+
+
+ 
+       <!--Garden api url-->
+ <script>
+       var apiCall ='https://data.cityofnewyork.us/resource/yes4-7zbb.json';
+
+ </script>
+
+    
+</body>
+</html>
+
