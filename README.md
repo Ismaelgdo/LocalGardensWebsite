@@ -1,4 +1,4 @@
-# WebDevFinal
+# Local Gardens 
 
 
 Website written using HTML, CSS, JavaScript, Vue AND vuetify
